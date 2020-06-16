@@ -16,5 +16,5 @@ ohpc_login
 ohpc_login
 ohpc_compute
 
-# FIXME: we won't use this
-[web]
+[web:children]
+ohpc_login

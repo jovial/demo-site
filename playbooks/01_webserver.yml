@@ -1,5 +1,6 @@
 ---
 - name: Setup HTTP server
+  become: true
   hosts: web
   roles:
   - caddy_ansible.caddy_ansible

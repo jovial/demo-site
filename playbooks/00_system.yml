@@ -1,14 +1,7 @@
 ---
-- name: Install python
-  hosts: all
-  gather_facts: false
-  tasks:
-  - name: Install python
-    raw: "apt update && apt install -y python3"
-    changed_when: false
-
 - name: Apply security restrictions
   hosts: all
+  become: true
   roles:
   - dev-sec.ssh-hardening
   - dev-sec.os-hardening
@@ -25,11 +18,3 @@
     - hard
   vars:
     ssh_permit_root_login: "without-password"
-
-- name: Configure automatic updates
-  hosts: all
-  roles:
-  - jnv.unattended-upgrades
-  vars:
-    unattended_automatic_reboot_time: "02:00"
-    unattended_update_days: 1
