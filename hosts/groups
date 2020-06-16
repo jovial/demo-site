@@ -1,0 +1,20 @@
+# empty declaration
+[ohpc_login]
+
+[ohpc_compute]
+
+[prometheus:children]
+ohpc_login
+
+[grafana:children]
+ohpc_login
+
+[alertmanager:children]
+ohpc_login
+
+[exporters:children]
+ohpc_login
+ohpc_compute
+
+# FIXME: we won't use this
+[web]
