@@ -2,7 +2,7 @@
 
 # NOTE: we probbaly be a better fit for a "setup" playbook, but we
 # only really use this one.
- hosts: prometheus
+- hosts: prometheus
   gather_facts: false
   tasks:
     - name: Generate /etc/hosts
