@@ -1,0 +1,2 @@
+[vm_compute]
+eb-computevm-0 ansible_host=10.238.215.109 server_networks='{"provider-318":["10.238.215.109"]}'

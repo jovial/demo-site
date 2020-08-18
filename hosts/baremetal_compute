@@ -1,0 +1,9 @@
+[baremetal_compute]
+eb-svn2-dr06-u11 ansible_host=10.238.215.130 server_networks='{"provider-318":["10.238.215.130"]}'
+eb-svn2-dr06-u21 ansible_host=10.238.215.194 server_networks='{"provider-318":["10.238.215.194"]}'
+eb-svn3-dr06-u10 ansible_host=10.238.215.180 server_networks='{"provider-318":["10.238.215.180"]}'
+eb-svn3-dr06-u26 ansible_host=10.238.215.103 server_networks='{"provider-318":["10.238.215.103"]}'
+eb-svn3-dr06-u32 ansible_host=10.238.215.154 server_networks='{"provider-318":["10.238.215.154"]}'
+eb-svn3-dr06-u8 ansible_host=10.238.215.106 server_networks='{"provider-318":["10.238.215.106"]}'
+eb-svn4-dr06-u33 ansible_host=10.238.215.152 server_networks='{"provider-318":["10.238.215.152"]}'
+eb-svn4-dr06-u5 ansible_host=10.238.215.192 server_networks='{"provider-318":["10.238.215.192"]}'

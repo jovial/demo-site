@@ -1,0 +1,2 @@
+[login]
+eb-login-0 ansible_host=10.238.215.145 server_networks='{"provider-318":["10.238.215.145"]}'

@@ -1,0 +1,6 @@
+[all:vars]
+ansible_ssh_common_args='-o ControlMaster=auto -o ControlPersist=60s -o ProxyCommand="ssh centos@128.232.224.84 -W %h:%p"'
+ansible_user=centos
+[computes:children]
+baremetal_compute
+vm_compute
