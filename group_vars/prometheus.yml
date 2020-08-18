@@ -34,7 +34,7 @@ prometheus_alert_rules:
 prometheus_targets:
   node:
   - targets:
-      "{{ groups['all'] | reject('localhost') | map('extract', hostvars, ['inventory_hostname']) | map('regex_replace', '$', ':9100') | list }}"
+      "{{ groups['all'] | reject('equalto', 'localhost') | map('extract', hostvars, ['inventory_hostname']) | map('regex_replace', '$', ':9100') | list }}"
     labels:
       env: demo
   alertmanager:
