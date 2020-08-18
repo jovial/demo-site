@@ -1,4 +1,20 @@
 ---
+
+# NOTE: we probbaly be a better fit for a "setup" playbook, but we
+# only really use this one.
+ hosts: prometheus
+  gather_facts: false
+  tasks:
+    - name: Generate /etc/hosts
+      blockinfile:
+        path: /etc/hosts
+        marker_begin: BEGIN hosts
+        block: |
+          {% for host in groups['computes'] %}
+          {{ hostvars[host].ansible_host }} {{ host }}
+          {% endfor %}
+      become: true
+
 - name: Deploy node_exporter
   hosts: all
   roles:
