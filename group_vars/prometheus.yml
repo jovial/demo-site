@@ -54,7 +54,7 @@ prometheus_scrape_configs:
   file_sd_configs:
   - files:
     - "/etc/prometheus/file_sd/random.yml"
- job_name: "grafana"
+- job_name: "grafana"
   static_configs:
   - targets:
     - "{{ ansible_host }}:3000"
