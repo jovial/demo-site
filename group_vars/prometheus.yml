@@ -42,8 +42,6 @@ prometheus_targets:
     - "{{ ansible_host }}:9093"
     labels:
       env: demo
-  random:
-  - targets: "{{ random_exporter_addresses }}"
 
 prometheus_scrape_configs:
 - job_name: "prometheus"
@@ -56,12 +54,7 @@ prometheus_scrape_configs:
   file_sd_configs:
   - files:
     - "/etc/prometheus/file_sd/random.yml"
-- job_name: "caddy"
-  metrics_path: "/metrics"
-  static_configs:
-  - targets:
-    - "localhost:9180"
-- job_name: "grafana"
+ job_name: "grafana"
   static_configs:
   - targets:
     - "{{ ansible_host }}:3000"
