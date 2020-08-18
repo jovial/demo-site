@@ -17,18 +17,22 @@ grafana_datasources:
   isDefault: true
 
 grafana_dashboards:
+  # Node exporter full
   - dashboard_id: '1860'
-    revision_id: '12'
+    revision_id: '21'
     datasource: '{{ grafana_datasources.0.name }}'
+  # Prometheus overview
   - dashboard_id: '3662'
     revision_id: '2'
     datasource: '{{ grafana_datasources.0.name }}'
-  - dashboard_id: '4271'
-    revision_id: '4'
-    datasource: '{{ grafana_datasources.0.name }}'
-  - dashboard_id: '4323'
-    revision_id: '2'
-    datasource: '{{ grafana_datasources.0.name }}'
+  # Docker
+#  - dashboard_id: '4271'
+#    revision_id: '4'
+#    datasource: '{{ grafana_datasources.0.name }}'
+#  Slurm
+#  - dashboard_id: '4323'
+#    revision_id: '2'
+#    datasource: '{{ grafana_datasources.0.name }}'
   # openHPC dashboard
   - dashboard_id: '10809'
     revision_id: '2'
