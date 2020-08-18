@@ -1,1 +1,84 @@
-/home/centos/eiffel-ohpc/terraform_ohpc/ohpc_hosts
+# Ansible Shade uses OpenStack clients running locally
+[openstack]
+localhost ansible_connection=local ansible_python_interpreter=python
+
+[alaska:children]
+openstack
+cluster
+
+[cluster:children]
+openhpc_login
+openhpc_compute
+
+[openhpc_login]
+openhpc-login-0 ansible_host=10.60.253.124 server_networks='{"ilab": ["10.60.253.124"], "p3-bdn": ["10.1.0.156"], "p3-lln": ["10.3.0.151"]}'
+
+[openhpc_login:vars]
+ansible_user=centos
+
+[openhpc_compute]
+openhpc-compute-0 ansible_host=10.60.253.88 server_networks='{"ilab": ["10.60.253.88"], "p3-bdn": ["10.1.0.104"], "p3-lln": ["10.3.0.217"]}'
+openhpc-compute-1 ansible_host=10.60.253.106 server_networks='{"ilab": ["10.60.253.106"], "p3-bdn": ["10.1.0.69"], "p3-lln": ["10.3.0.188"]}'
+openhpc-compute-2 ansible_host=10.60.253.23 server_networks='{"ilab": ["10.60.253.23"], "p3-bdn": ["10.1.0.240"], "p3-lln": ["10.3.0.239"]}'
+openhpc-compute-3 ansible_host=10.60.253.26 server_networks='{"ilab": ["10.60.253.26"], "p3-bdn": ["10.1.0.155"], "p3-lln": ["10.3.0.133"]}'
+openhpc-compute-4 ansible_host=10.60.253.32 server_networks='{"ilab": ["10.60.253.32"], "p3-bdn": ["10.1.0.93"], "p3-lln": ["10.3.0.221"]}'
+openhpc-compute-5 ansible_host=10.60.253.121 server_networks='{"ilab": ["10.60.253.121"], "p3-bdn": ["10.1.0.143"], "p3-lln": ["10.3.0.82"]}'
+openhpc-compute-6 ansible_host=10.60.253.69 server_networks='{"ilab": ["10.60.253.69"], "p3-bdn": ["10.1.0.98"], "p3-lln": ["10.3.0.216"]}'
+openhpc-compute-7 ansible_host=10.60.253.60 server_networks='{"ilab": ["10.60.253.60"], "p3-bdn": ["10.1.0.29"], "p3-lln": ["10.3.0.23"]}'
+openhpc-compute-8 ansible_host=10.60.253.19 server_networks='{"ilab": ["10.60.253.19"], "p3-bdn": ["10.1.0.229"], "p3-lln": ["10.3.0.124"]}'
+openhpc-compute-9 ansible_host=10.60.253.118 server_networks='{"ilab": ["10.60.253.118"], "p3-bdn": ["10.1.0.175"], "p3-lln": ["10.3.0.254"]}'
+openhpc-compute-10 ansible_host=10.60.253.71 server_networks='{"ilab": ["10.60.253.71"], "p3-bdn": ["10.1.0.227"], "p3-lln": ["10.3.0.211"]}'
+openhpc-compute-11 ansible_host=10.60.253.102 server_networks='{"ilab": ["10.60.253.102"], "p3-bdn": ["10.1.0.56"], "p3-lln": ["10.3.0.135"]}'
+openhpc-compute-12 ansible_host=10.60.253.25 server_networks='{"ilab": ["10.60.253.25"], "p3-bdn": ["10.1.0.179"], "p3-lln": ["10.3.0.236"]}'
+openhpc-compute-13 ansible_host=10.60.253.83 server_networks='{"ilab": ["10.60.253.83"], "p3-bdn": ["10.1.0.222"], "p3-lln": ["10.3.0.136"]}'
+openhpc-compute-14 ansible_host=10.60.253.119 server_networks='{"ilab": ["10.60.253.119"], "p3-bdn": ["10.1.0.218"], "p3-lln": ["10.3.0.121"]}'
+openhpc-compute-15 ansible_host=10.60.253.78 server_networks='{"ilab": ["10.60.253.78"], "p3-bdn": ["10.1.0.12"], "p3-lln": ["10.3.0.237"]}'
+
+[openhpc_compute:vars]
+ansible_user=centos
+
+# Specific roles for cluster deployment assignments
+[cluster_ceph_client:children]
+openhpc_login
+openhpc_compute
+
+[cluster_latest_packages:children]
+openhpc_login
+openhpc_compute
+
+[cluster_login:children]
+openhpc_login
+
+[cluster_control:children]
+openhpc_login
+
+[cluster_batch:children]
+openhpc_compute
+
+[cluster_runtime:children]
+openhpc_login
+openhpc_compute
+
+[cluster_mdadm:children]
+openhpc_compute
+
+[cluster_glusterfs_server:children]
+openhpc_compute
+
+[cluster_glusterfs_client:children]
+openhpc_compute
+
+[cluster_beegfs_mgmt:children]
+openhpc_login
+
+[cluster_beegfs_mds:children]
+openhpc_login
+
+[cluster_beegfs_oss:children]
+openhpc_compute
+
+[cluster_beegfs_client:children]
+openhpc_login
+openhpc_compute
+
+

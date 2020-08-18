@@ -1,20 +1,20 @@
 # empty declaration
-[ohpc_login]
+[openhpc_login]
 
-[ohpc_compute]
+[openhpc_compute]
 
 [prometheus:children]
-ohpc_login
+openhpc_login
 
 [grafana:children]
-ohpc_login
+openhpc_login
 
 [alertmanager:children]
-ohpc_login
+openhpc_login
 
 [exporters:children]
-ohpc_login
-ohpc_compute
+openhpc_login
+openhpc_compute
 
 [web:children]
-ohpc_login
+openhpc_login
