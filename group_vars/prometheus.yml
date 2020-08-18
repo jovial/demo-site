@@ -34,7 +34,7 @@ prometheus_alert_rules:
 prometheus_targets:
   node:
   - targets:
-      "{{ groups['all'] | map('extract', hostvars, ['ansible_host']) | map('regex_replace', '$', ':9100') | list }}"
+      "{{ groups['all'] | map('extract', hostvars, ['inventory_hostname']) | map('regex_replace', '$', ':9100') | list }}"
     labels:
       env: demo
   alertmanager:
@@ -69,6 +69,14 @@ prometheus_scrape_configs:
   file_sd_configs:
   - files:
     - "/etc/prometheus/file_sd/node.yml"
+  relabel_configs:
+  # strip off port
+  - source_labels: ['__address__']
+    separator:     ':'
+    regex:         '(.*):.*'
+    target_label:  'instance'
+    replacement:   '${1}'
+
 - job_name: "alertmanager"
   file_sd_configs:
   - files:
